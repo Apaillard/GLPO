@@ -8,11 +8,14 @@ from vue.member_frames.new_coach_frame import NewCoachFrame
 from vue.member_frames.list_members_frame import ListMembersFrame
 from vue.member_frames.list_membres_membre_frame import ListMembersMembresFrame
 from vue.member_frames.profile_frame import ProfileFrame
+from vue.member_frames.profile_membre_frame import ProfileMembreFrame
 from vue.sport_frames.list_sports_frame import ListSportsFrame
 from vue.sport_frames.list_sports_member_frame import ListSportsMemberFrame
 from vue.sport_frames.new_sport_frame import NewSportFrame
 from vue.sport_frames.sport_profile_frame import SportProfileFrame
+from vue.sport_frames.sport_profile_member_frame import SportProfileMemberFrame
 from vue.member_frames.connexion_frame import ConnexionFrame
+
 
 
 class RootFrame(Frame):
@@ -88,6 +91,14 @@ class RootFrame(Frame):
         self._frames.append(profile_frame)
         profile_frame.show()
 
+    def show_profile_membre(self, member_id):
+        self.hide_menu()
+        member_data = self._person_controller.get_person(member_id)
+        self.hide_frames()
+        profile_frame = ProfileMembreFrame(self._person_controller, self._sport_controller, member_data, self)
+        self._frames.append(profile_frame)
+        profile_frame.show()
+
     def show_sports(self):
         self.hide_menu()
         list_frame = ListSportsFrame(self._sport_controller, self)
@@ -105,6 +116,14 @@ class RootFrame(Frame):
         sport_data = self._sport_controller.get_sport(sport_id)
         self.hide_frames()
         profile_frame = SportProfileFrame(self._sport_controller, sport_data, self)
+        self._frames.append(profile_frame)
+        profile_frame.show()
+
+    def show_sport_member(self, sport_id):
+        self.hide_menu()
+        sport_data = self._sport_controller.get_sport(sport_id)
+        self.hide_frames()
+        profile_frame = SportProfileMemberFrame(self._sport_controller, sport_data, self)
         self._frames.append(profile_frame)
         profile_frame.show()
 
