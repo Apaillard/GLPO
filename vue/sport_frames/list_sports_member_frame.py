@@ -27,7 +27,7 @@ class ListSportsMemberFrame(BaseFrame):
         self.listbox.grid(row=1, column=0, columnspan=2, sticky='nsew')
 
         # Return bouton
-        self.show_sport_button = Button(self, text="Show profile", command=self.show_sport_member)
+        self.show_sport_button = Button(self, text="Show profile", command=self.show_sport)
         self.menu = Button(self, text="Return", fg="red",
                            command=self.show_menu_membre)
         self.menu.grid(row=4, column=0, sticky="w")
@@ -44,7 +44,7 @@ class ListSportsMemberFrame(BaseFrame):
         else:
             index = int(self.listbox.curselection()[0])
             sport = self._sports[index]
-            self._root_frame.show_sport(sport['id'])
+            self._root_frame.show_sport_member(sport['id'])
 
     def show(self):
         self._sports = self._sport_controller.list_sports()

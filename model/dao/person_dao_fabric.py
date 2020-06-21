@@ -1,7 +1,6 @@
 
 from model.dao.person_dao import PersonDAO
 from model.dao.member_dao import MemberDAO
-from model.dao.coach_dao import CoachDAO
 
 
 class PersonDAOFabric:
@@ -15,7 +14,5 @@ class PersonDAOFabric:
 
         if type == 'member':
             return MemberDAO(self._database_session)
-        elif type == 'coach':
-            return CoachDAO(self._database_session)
         else:
             return PersonDAO(self._database_session)

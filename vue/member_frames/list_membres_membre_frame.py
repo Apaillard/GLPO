@@ -55,7 +55,7 @@ class ListMembersMembresFrame(BaseFrame):
         else:
             index = int(self.listbox.curselection()[0])
             member = self._members[index]
-            self._root_frame.show_profile(member['id'])
+            self._root_frame.show_profile_membre(member['id'])
 
     def show(self):
         self._members = self._person_controller.list_people(person_type=self._person_type)
